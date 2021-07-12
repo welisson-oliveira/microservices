@@ -1,6 +1,7 @@
 package br.com.alura.microservice.loja.controller;
 
-import br.com.alura.microservice.loja.domain.PurchaseApplicationService;
+import br.com.alura.microservice.loja.domain.purchase.Purchase;
+import br.com.alura.microservice.loja.domain.purchase.PurchaseApplicationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +15,7 @@ public class PurchaseController {
 	private final PurchaseApplicationService purchaseApplicationService;
 
 	@PostMapping
-	public void makePurchase(@RequestBody PurchaseDTO purchase) {
-		purchaseApplicationService.makePurchase(purchase.convert());
+	public Purchase makePurchase(@RequestBody PurchaseDTO purchase) {
+		return purchaseApplicationService.makePurchase(purchase.convert());
 	}
 }

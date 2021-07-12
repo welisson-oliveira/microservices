@@ -1,8 +1,8 @@
 package br.com.alura.microservice.loja.controller.dto;
 
-import br.com.alura.microservice.loja.domain.Address;
-import br.com.alura.microservice.loja.domain.Purchase;
-import br.com.alura.microservice.loja.domain.PurchaseItem;
+import br.com.alura.microservice.loja.domain.purchase.Address;
+import br.com.alura.microservice.loja.domain.purchase.Purchase;
+import br.com.alura.microservice.loja.domain.purchase.PurchaseItem;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,6 +26,6 @@ public class PurchaseDTO {
 
 	public Purchase convert() {
 		return new Purchase(new Address(this.getAddress().getStreet(), this.getAddress().getNumber(), this.address.getState()),
-				this.getItems().stream().map(item -> new PurchaseItem(item.getId(), item.getQuantity())).collect(Collectors.toList()));
+				this.getItems().stream().map(item -> new PurchaseItem(item.getProduct(), item.getQuantity())).collect(Collectors.toList()));
 	}
 }

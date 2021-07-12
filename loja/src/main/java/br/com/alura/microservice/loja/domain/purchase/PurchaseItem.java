@@ -1,4 +1,4 @@
-package br.com.alura.microservice.loja.domain;
+package br.com.alura.microservice.loja.domain.purchase;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
 public class PurchaseItem {
-    private long id;
+    private long product;
     private int quantity;
 }

@@ -1,4 +1,4 @@
-package br.com.alura.microservice.loja.domain;
+package br.com.alura.microservice.loja.domain.purchase;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

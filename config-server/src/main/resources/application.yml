@@ -1,11 +1,19 @@
 server:
   port: 8888
 
+#spring:
+#  profiles:
+#    active: native
+#  cloud:
+#    config:
+#      server:
+#        native:
+#          search-locations: /home/welisson/Projetos-estudos/projetos/Microservices/microsservicos-workspace-aula-1/microservicos/microservices-config-repo
 spring:
-  profiles:
-    active: native
   cloud:
     config:
       server:
-        native:
-          search-locations: /home/welisson/Projetos-estudos/projetos/Microservices/microsservicos-workspace-aula-1/microservicos/microservices-config-repo
+        git:
+          uri: https://github.com/welisson-oliveira/microservices.git
+          default-label: master
+          search-paths: microservices-config-repo/fornecedor
