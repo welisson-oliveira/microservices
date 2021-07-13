@@ -31,9 +31,10 @@ public class SupplierApplicationServices {
             return null;
         }
         Order order = new Order(items);
-        supplier.addOrder(order);
+        Order savedOrder = orderRepository.save(order);
+        supplier.addOrder(savedOrder);
         repository.save(supplier);
-        return order;
+        return savedOrder;
     }
 
     public Order getOrderById(Long id) {

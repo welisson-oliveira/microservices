@@ -1,7 +1,5 @@
 package br.com.alura.microservice.loja.controller.dto;
 
-import br.com.alura.microservice.loja.domain.purchase.Address;
-import br.com.alura.microservice.loja.domain.purchase.PurchaseItem;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,10 +11,10 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
-public class BookingItemDTO {
+public class OrderDTO {
     private Long id;
     private Integer preparationTime;
-    private Address address;
+    private AddressDTO address;
     private List<OrderItemDTO> items;
 
     public List<OrderItemDTO> getItems() {
@@ -24,4 +22,7 @@ public class BookingItemDTO {
     }
 
 
+    public String getState() {
+        return address != null ? address.getState() : null;
+    }
 }

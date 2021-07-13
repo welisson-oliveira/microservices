@@ -12,6 +12,6 @@ public class OrderItemParser {
     private final ProductRepository productRepository;
 
     public OrderItem parse(OrderItemDTO orderItemDTO){
-        return new OrderItem(null, orderItemDTO.getQuantity(), productRepository.findById(orderItemDTO.getProduct()).orElse(null));
+        return new OrderItem(null, orderItemDTO.getQuantity(), productRepository.findById(orderItemDTO.getProductId()).orElse(null));
     }
 }

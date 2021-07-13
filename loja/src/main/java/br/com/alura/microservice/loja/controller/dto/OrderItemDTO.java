@@ -1,6 +1,5 @@
 package br.com.alura.microservice.loja.controller.dto;
 
-import br.com.alura.microservice.loja.domain.purchase.PurchaseItem;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,7 +13,7 @@ public class OrderItemDTO {
     private Integer quantity;
     private ProductDTO product;
 
-    public PurchaseItem convert() {
-        return new PurchaseItem(this.getId(), this.getProduct().getId(), this.getQuantity());
+    public Long getProductId(){
+        return product.getId();
     }
 }
