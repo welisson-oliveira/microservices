@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @Log4j2
@@ -25,14 +27,14 @@ public class PurchaseApplicationService {
     private String url;
 
 
-//    @HystrixCommand(fallbackMethod = "makePurchaseFallback")
+    @HystrixCommand(fallbackMethod = "makePurchaseFallback", threadPoolKey = "makePurchase")
     @Transactional
     public PurchaseDTO makePurchase(PurchaseRequestDTO purchaseRequest) {
-//        try {
-//            Thread.sleep(5000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         log.info("Buscando informações de fornecedor {}", purchaseRequest.getState());
         SupplierDTO supplier = supplierClient.getSupplierByState(purchaseRequest.getState());
@@ -44,22 +46,25 @@ public class PurchaseApplicationService {
         return new PurchaseDTO(purchase.getId(), order);
     }
 
-//    public PurchaseDTO makePurchaseFallback(PurchaseRequestDTO purchaseRequest){
-//        log.info("Buscando informações de fornecedor {}", purchaseRequest.getState());
+    public PurchaseDTO makePurchaseFallback(PurchaseRequestDTO purchaseRequest){
+        log.info("Buscando informações de fornecedor {}", purchaseRequest.getState());
 //        SupplierDTO supplier = supplierClient.getSupplierByState(purchaseRequest.getState());
-//        log.info("Realizando um pedido");
+        log.info("Realizando um pedido");
 //        OrderDTO order = supplierClient.makeOrder(supplier.getId(), purchaseRequest.getItems());
-//
+
 //        Purchase purchase = new Purchase(null, order.getId());
 //        purchaseRepository.save(purchase);
 //        return new PurchaseDTO(purchase.getId(), order);
-//    }
-
-    public OrderDTO getById(final Long id) {
-        return this.supplierClient.getOrderById(id);
+        return null;
     }
 
+    @HystrixCommand(threadPoolKey = "getPurchaseById")
     public Purchase getPurchaseById(Long id) {
         return purchaseRepository.findById(id).orElseThrow(() -> new RuntimeException("Compra não encontrada"));
+    }
+
+    @HystrixCommand(threadPoolKey = "getAllPurchase")
+    public List<Purchase> getAllPurchase() {
+        return (List<Purchase>) purchaseRepository.findAll();
     }
 }
