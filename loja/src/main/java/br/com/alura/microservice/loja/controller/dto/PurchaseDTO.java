@@ -17,15 +17,24 @@ import java.util.stream.Collectors;
 @Getter
 public class PurchaseDTO {
 
+	private Long id;
 	private AddressDTO address;
+	private Integer preparationTime;
 	private List<PurchaseItemDTO> items;
 
 	public List<PurchaseItemDTO> getItems() {
 		return Collections.unmodifiableList(items);
 	}
 
-	public Purchase convert() {
-		return new Purchase(new Address(this.getAddress().getStreet(), this.getAddress().getNumber(), this.address.getState()),
-				this.getItems().stream().map(item -> new PurchaseItem(item.getProduct(), item.getQuantity())).collect(Collectors.toList()));
+	public PurchaseDTO(final Long id, final Integer preparationTime, final AddressDTO address, List<PurchaseItemDTO> purchaseItems){
+		this.id = id;
+		this.address = address;
+		items.addAll(purchaseItems);
+		this.preparationTime = preparationTime;
+	}
+
+
+	public String getState() {
+		return address != null ? address.getState() : null;
 	}
 }

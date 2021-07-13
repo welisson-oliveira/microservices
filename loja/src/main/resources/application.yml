@@ -1,8 +1,6 @@
 supplier-url: http://fornecedor:8080
 
 spring:
-  application:
-    name: 'loja'
   # zipkin
   zipkin:
     sender: web

@@ -15,6 +15,6 @@ public class OrderItemDTO {
     private ProductDTO product;
 
     public PurchaseItem convert() {
-        return new PurchaseItem(this.getProduct().getId(), this.getQuantity());
+        return new PurchaseItem(this.getId(), this.getProduct().getId(), this.getQuantity());
     }
 }

@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
 public class PurchaseItemDTO {
-
-	private long product;
-	private int quantity;
+	private Long id;
+	private Long product;
+	private Integer quantity;
 
 }
