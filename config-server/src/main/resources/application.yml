@@ -16,4 +16,4 @@ spring:
         git:
           uri: https://github.com/welisson-oliveira/microservices.git
           default-label: master
-          search-paths: microservices-config-repo/fornecedor, microservices-config-repo/loja
+          search-paths: microservices-config-repo/fornecedor, microservices-config-repo/loja, microservices-config-repo/transportador

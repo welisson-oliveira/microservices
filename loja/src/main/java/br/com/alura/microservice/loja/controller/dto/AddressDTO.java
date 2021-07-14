@@ -15,4 +15,13 @@ public class AddressDTO {
 	private int number;
 	private String state;
 
+	@Override
+	public String toString() {
+		return "AddressDTO{" +
+				"id=" + id +
+				", street='" + street + '\'' +
+				", number=" + number +
+				", state='" + state + '\'' +
+				'}';
+	}
 }

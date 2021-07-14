@@ -1,5 +1,5 @@
-supplier-url: http://fornecedor:8080
-
+server:
+  port: 8081
 spring:
   # zipkin
   zipkin:
