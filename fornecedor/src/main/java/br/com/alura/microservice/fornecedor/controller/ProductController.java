@@ -17,9 +17,9 @@ public class ProductController {
 	@Autowired
 	private ProductApplicationsServices productApplicationsServices;
 	
-	@GetMapping("/{estado}")
-	public List<Product> getProductByState(@PathVariable("estado") String estado) {
-		return productApplicationsServices.getProductByState(estado);
+	@GetMapping("/{state}")
+	public List<Product> getProductByState(@PathVariable String state) {
+		return productApplicationsServices.getProductByState(state);
 	}
 
 	@GetMapping

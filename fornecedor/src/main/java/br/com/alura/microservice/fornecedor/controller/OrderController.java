@@ -2,11 +2,11 @@ package br.com.alura.microservice.fornecedor.controller;
 
 import br.com.alura.microservice.fornecedor.domain.order.OrderApplicationServices;
 import br.com.alura.microservice.fornecedor.domain.supplier.Order;
+import br.com.alura.microservice.fornecedor.domain.supplier.OrderState;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Collections;
 
 @RestController
 @RequestMapping("/order")
@@ -18,5 +18,10 @@ public class OrderController {
     @GetMapping("/{id}")
     public Order getOrder(@PathVariable final Long id){
         return orderApplicationServices.getOrderById(id);
+    }
+
+    @PostMapping
+    public Order createOrder(){
+        return new Order(1L,3, OrderState.RECEIVED, Collections.emptyList());
     }
 }

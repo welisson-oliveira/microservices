@@ -1,0 +1,382 @@
+{
+	"info": {
+		"_postman_id": "76937284-ca83-4671-b83d-6f4e4371020d",
+		"name": "Microservices-loja",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "STORE - Purchase",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "04d01697-c34f-449e-927e-78e456e296bf",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"items\": [\n\t\t{\n\t\t\t\"product\": {\"id\":1},\n\t\t\t\"quantity\": 5\n\t\t},\n\t\t{\n\t\t\t\"product\": {\"id\":2},\n\t\t\t\"quantity\": 1\n\t\t}\n\t],\n\t\"address\": {\n\t\t\"street\": \"Rua da Maria\",\n\t\t\"number\": \"123\",\n\t\t\"state\": \"mg\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/purchase",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"purchase"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EUREKA - apps",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8761/eureka/apps",
+					"host": [
+						"localhost"
+					],
+					"port": "8761",
+					"path": [
+						"eureka",
+						"apps"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Config-server",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8888/transportador/transportador",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"transportador",
+						"transportador"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SUPPLIER - createOrder",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "04d01697-c34f-449e-927e-78e456e296bf",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8082/order",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "STORE - getPurchaseById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/purchase/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"purchase",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/purchase/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/purchase/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"purchase",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AUTH - Login",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "lojapwd",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "loja",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic Y2xpZW50LWFwcDoxMjM0NTY=",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "scope",
+							"value": "web",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "welisson",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "qwert",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8088/oauth/token",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AUTH - getUserInfo",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "04d01697-c34f-449e-927e-78e456e296bf",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8088/user",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SUPPLIER - getProducts",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "04d01697-c34f-449e-927e-78e456e296bf",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8082/product",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ZUUL - getProducts",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "04d01697-c34f-449e-927e-78e456e296bf",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/fornecedor/product",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"fornecedor",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AUTH - createPurchase",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "04d01697-c34f-449e-927e-78e456e296bf",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"items\": [\n\t\t{\n\t\t\t\"product\": {\"id\":1},\n\t\t\t\"quantity\": 5\n\t\t},\n\t\t{\n\t\t\t\"product\": {\"id\":2},\n\t\t\t\"quantity\": 1\n\t\t}\n\t],\n\t\"address\": {\n\t\t\"street\": \"Rua da Maria\",\n\t\t\"number\": \"123\",\n\t\t\"state\": \"mg\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/loja/purchase",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"loja",
+						"purchase"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
